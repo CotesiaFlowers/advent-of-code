@@ -10,7 +10,7 @@ section '.data' data readable writeable
 
 section '.text' code readable executable
 	start:
-		cinvoke fopen, "input.1", "r"
+		cinvoke fopen, "input1", "r"
 		mov [fp], eax
 	reset:
 		cinvoke getc, [fp]
@@ -26,6 +26,7 @@ section '.text' code readable executable
 		jmp reset
 	fin:
 		cinvoke printf, formatstring, [sum]
+		invoke ExitProcess, 0
 
 section '.idata' import data readable
 
