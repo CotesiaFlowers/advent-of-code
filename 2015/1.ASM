@@ -6,17 +6,17 @@ include 'win32axp.inc'
 section '.data' data readable writeable
 	fp dd 0
 	sum dd 0
-	formatstring db "%d", 13, 10, 0
+	formatstring db '%d', 13, 10, 0
 
 section '.text' code readable executable
 	start:
-		cinvoke fopen, "input1", "r"
+		cinvoke fopen, 'input1', 'r'
 		mov [fp], eax
 	reset:
 		cinvoke getc, [fp]
 		cmp eax, -1
 		je fin
-		cmp eax, 40
+		cmp eax, '('
 		je incr
 	decr:
 		dec [sum]
