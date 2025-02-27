@@ -45,9 +45,8 @@ int main() {
 		sscanf(s, "%d%n", &h, &o); s+=o+1;
 		int a = MIN(MIN(l,w), h); // smallest axis
 		int b = MIN(MAX(l,h), MIN(MAX(l,w), MAX(w,h))); // second smallest axis
-		paper += a * b + 2*l*w + 2*w*h + 2*h*l;
+		paper += a*b + 2*l*w + 2*w*h + 2*h*l;
 		ribbon += 2*a + 2*b + l*w*h;
-
 	} while (*s != EOF);
 
 	printf("wrapping paper: %dft\n", paper);
