@@ -39,7 +39,7 @@ int main() {
 		l=readnum(&input);
 		w=readnum(&input);
 		h=readnum(&input);
-		int a = MIN(MIN(l,w), MIN(w,h)); // smallest axis
+		int a = MIN(MIN(l,w), h); // smallest axis
 		int b = MIN(MAX(l,h), MIN(MAX(l,w), MAX(w,h))); // second smallest axis
 		paper += a * b + 2*l*w + 2*w*h + 2*h*l;
 		ribbon += 2*a + 2*b + l*w*h;
