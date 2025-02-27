@@ -31,17 +31,21 @@ int main() {
 	rewind(f);
 	char *input = (char*) malloc(size);
 	fread(input, size, 1, f);
-	int sum=0;
+	int paper=0, ribbon=0;
 	input[size]=EOF;
 
 	do {
-		int l=0 ,w=0, h=0; // height, width, depth
+		int l=0 ,w=0, h=0;
 		l=readnum(&input);
 		w=readnum(&input);
 		h=readnum(&input);
-		sum += MIN(MIN(l,w), MIN(w,h)) * MIN(MAX(l,h), MIN(MAX(l,w), MAX(w,h))) + 2*l*w + 2*w*h + 2*h*l;
+		int a = MIN(MIN(l,w), MIN(w,h)); // smallest axis
+		int b = MIN(MAX(l,h), MIN(MAX(l,w), MAX(w,h))); // second smallest axis
+		paper += a * b + 2*l*w + 2*w*h + 2*h*l;
+		ribbon += 2*a + 2*b + l*w*h;
+
 	} while (*input != EOF);
 
-	printf("%d\n", sum);
+	printf("wrapping paper: %dft\n", paper);
+	printf("ribbon: %dft\n", ribbon);
 }
-
